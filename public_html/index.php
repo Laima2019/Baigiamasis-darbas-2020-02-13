@@ -33,18 +33,23 @@ $footer = new \App\Views\Footer();
         <div class="services-container">
             <div class="service-container">
                 <img class="img-size" src="media/image/taxi-cost.jpg">
-                <h3 class="service-name" pick up taxi /h3>
-                <p>Lorem Ipsum</p>
+                <h5 class="service-name" pick up taxi /h5>
+                <p>Skubėdami į oro uostą, lankydami šeimos narį už miesto ar vykdami į susitikimą, „Taxi“ gali patenkinti visus jūsų mobilumo poreikius mieste.</p>
+                </p>
             </div>
             <div class="service-container">
                 <img class="img-size" src="media/image/taxi-cost.jpg">
-                <h3 class="service-name" pick up taxi /h3>
-                <p>Lorem Ipsum</p>
+                <h5 class="service-name" pick up taxi /h5>
+                <p>
+                    Mūsų parką sudaro prabangūs „Mercedes Benz“ sedanai , taip pat mikroautobusai, dideli furgonai ir šventiniai autobusai jūsų didelėms grupėms.</p>
+                </p>
             </div>
             <div class="service-container">
                 <img class="img-size" src="media/image/taxi-cost.jpg">
-                <h3 class="service-name" pick up taxi /h3>
-                <p>Lorem Ipsum</p>
+                <h5 class="service-name" pick up taxi /h5>
+                <p>Mūsų kainos prieinamos, o vairuotojai visada mandagūs ir profesionalūs.
+                    Mes suprantame, kaip svarbu jus sudominti
+                    Kelionės tikslas yra saugus ir greitas, todėl mes kiekvieną kartą didžiuojamės tuo, kad atvykstame laiku.</p>
             </div>
         </div>
 

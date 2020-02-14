@@ -14,7 +14,7 @@ $footer = new \App\Views\Footer();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Feedback</title>
     <link rel="stylesheet" href="media/css/normalize.css">
     <link rel="stylesheet" href="media/css/milligram.min.css">
     <link rel="stylesheet" href="media/css/style.css">
@@ -26,45 +26,42 @@ $footer = new \App\Views\Footer();
 </header>
 
 <main>
-    <div class="block">
-        <div id="person-table">
-            <table>
-                <thead>
-                <tr>
-                    <th>Vardas</th>
-                    <th>Komentaras</th>
-                    <th>Data</th>
-
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Rows Are Dynamically Populated -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <section class="wrapper">
-
-
-
-        <?php if (App::$session->userLoggedIn()): ?>
-            <?php print $createForm->render(); ?>
-            <div class="block" id="review-form">
-                <h2>Komentaras:</h2>
-                <?php else:?>
-              <p>
-                  Norite parašyti atsiliepimą <a href="/register.php">Registruokis !</a>
-              </p>
-
-            </div>
-        <?php endif; ?>
+    <section class="'wrapper">
         <div class="block">
+            <h4>Atsiliepimų suvestinė</h4>
             <div id="person-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>vardas</th>
+                        <th>komentaras</th>
+                        <th>data</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </section>
+    <section class="wrapper">
+        <?php if (App::$session->userLoggedIn()): ?>
+            <?php print $createForm->render(); ?>
+            <div class="block" id="review-form">
+        <?php else: ?>
+            <p>
+                Norite parašyti atsiliepimą <a href="/register.php">Registruokis!</a>
+            </p>
+            </div>
+        <?php endif; ?>
 
+    </section>
 
+    <!-- Update Modal -->
+    <div id="update-modal" class="modal">
+        <div class="wrapper">
+            <span class="close">&times;</span>
+            <?php print $updateForm->render(); ?>
+        </div>
+    </div>
 </main>
 
 <!-- Footer -->

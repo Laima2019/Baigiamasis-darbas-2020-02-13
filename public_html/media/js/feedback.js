@@ -248,26 +248,30 @@ const table = {
         build: function (data) {
 
             const row = document.createElement('tr');
-            table.setAttribute('data-id', data.id);
+            row.setAttribute('data-id', data.id);
 
             Object.keys(data).forEach(data_id => {
+                if(data_id === 'id'){
+                    return;
+                }
                 let td = document.createElement('td');
                 td.innerHTML = data[data_id];
-                if (data_id !== 'id' && data_id != 'view') {
+
+                // if (data_id !== 'id' && data_id != 'review') {
                     row.append(td);
-                }
+                // }
             });
 
             //if (document.getElementById('review-form')) {
-            if (forms.create.getElement()) {
-                Object.keys(buttons).forEach(button_id => {
-                    let btn = document.createElement('td');
-                    btn.innerHTML = buttons[button_id];
-                    btn.className = button_id;
-                    table.append(btn);
-                });
-            }
-            return row;
+            // if (forms.create.getElement()) {
+            //     Object.keys(buttons).forEach(button_id => {
+            //         let btn = document.createElement('td');
+            //         btn.innerHTML = buttons[button_id];
+            //         btn.className = button_id;
+            //         row.append(btn);
+            //     });
+            // }
+            // return row;
         },
         /**
          * Appends row to table from data
@@ -284,8 +288,8 @@ const table = {
          * @param {Object} data
          */
         update: function (data) {
-            let table = table.getElement().querySelector('div[data-id="' + data.id + '"]');
-            table.replaceWith(this.build(data));
+            let row = table.getElement().querySelector('tr[data-id="' + data.id + '"]');
+            row.replaceWith(this.build(data));
             //row = this.build(data);
         },
         /**
@@ -293,8 +297,8 @@ const table = {
          * @param {Integer} id
          */
         delete: function (id) {
-            const table = table.getElement().querySelector('div[data-id="' + id + '"]');
-            table.remove();
+            const row = table.getElement().querySelector('tr[data-id="' + id + '"]');
+            row.remove();
         }
     },
     buttons: {
@@ -309,9 +313,9 @@ const table = {
                 if (e.target.className === 'delete') {
                     let formData = new FormData();
 
-                    let table = e.target.closest('div.table-container');
+                    let tr = e.target.closest('tr');
 
-                    formData.append('id', table.getAttribute('data-id'));
+                    formData.append('id', tr.getAttribute('data-id'));
                     api(endpoints.delete, formData, table.buttons.delete.success, table.buttons.delete.fail);
                 }
             },
@@ -334,9 +338,9 @@ const table = {
                 if (e.target.className === 'edit') {
                     let formData = new FormData();
 
-                    let table = e.target.closest('div.table-container');
+                    let tr = e.target.closest('tr');
 
-                    formData.append('row_id', table.getAttribute('data-id'));
+                    formData.append('row_id', tr.getAttribute('data-id'));
                     api(endpoints.get, formData, table.buttons.edit.success, table.buttons.edit.fail);
                 }
             },

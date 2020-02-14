@@ -47,7 +47,6 @@ function form_success($filtered_input, $form)
     $review_arr = $review->getData();
     $review_arr['time_stamp'] = date('y-m-d', $review_arr['time_stamp']);
 
-
     $user = $models['user']->getById($review_arr['user_id']);
     $review_arr['full_name'] = $user->getName();
 
